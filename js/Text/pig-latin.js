@@ -4,10 +4,10 @@ var prompt = require('prompt');
 prompt.start();
 prompt.message = 'Pig Latin'
 prompt.get(['text'], function(err, result) {
-  var reversed = [],
-      text = result.text;
+  var text = result.text,
+      piglatin = [];
   
-  var piglatin = text.split(/\s+/).map(function(word) {
+  piglatin = text.split(/\s+/).map(function(word) {
     var parts = word.match(/([^aeiou]*)(.*)/);
     return [parts[2], '-', parts[1], 'ay'].join('');
   });
