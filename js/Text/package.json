@@ -11,6 +11,7 @@
     "node": ">= 0.10.x"
   },
   "dependencies": {
-    "prompt": "~0.2.11"
+    "prompt": "~0.2.11",
+    "commander": "~2.0.0"
   }
 }
