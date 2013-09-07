@@ -1,0 +1,16 @@
+{
+  "name": "Text_Projects",
+  "version": "1.0.0",
+  "description": "Just my package for Text Problems",
+  "author": "Derek Henscheid <derekhenscheid@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhensche/learning-projects.git"
+  },
+  "engines": {
+    "node": ">= 0.10.x"
+  },
+  "dependencies": {
+    "prompt": "~0.2.11"
+  }
+}
