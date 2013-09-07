@@ -33,7 +33,7 @@ if (program.file) {
   console.log(program.file)
   var fs = require('fs');
   fs.readFile(program.file, {encoding: 'utf8'}, function read(err, data) {
-    if (err) console.err(err);
+    if (err) throw err;
     else {
       countWords(data);
     }
