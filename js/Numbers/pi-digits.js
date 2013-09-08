@@ -1,38 +1,26 @@
 #!/usr/bin/env node
 
-var program = require('commander');
-
-Number.prototype.getAllDigits = function getAllDigits() {
-  var digits = [],
-      copy = this,
-      log10 = Math.log(10);
-  for(; copy;) {
-    var base = Math.pow(10, Math.floor(Math.log(copy)/log10));
-    var leftovers = copy % base;
-    digits.push(Math.floor(copy / base));
-    copy = leftovers;
-  }
-  
-  digits.push(copy);
-  return digits.join('');
-}
+var program = require('commander'),
+    BigNumber = require('big-number').n;
 
 /**
   Uses the Taylor series expansion for arctan
   http://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Infinite_series
+
+  @returns BigNumber
 */
 function arccot(x, precision) {
-  var unity = Math.pow(10, precision + 10),
-      sum = Math.floor(unity / x),
-      xpower = sum, n = 3, sign = -1;
+  var unity = BigNumber(10).pow(precision + 10),
+      sum = BigNumber(unity.toString()).div(x),
+      xpower = BigNumber(sum.toString()), n = 3, sign = -1, term;
       
-  for(var term = sum; ;) {
-    xpower = Math.floor(xpower / Math.pow(x, 2));
-    term = Math.floor(xpower / n);
+  for(;;) {
+    xpower.div(Math.pow(x, 2));
+    term = BigNumber(xpower.toString()).div(n);
     
-    if (!term) break;
+    if (term.isZero()) break;
     
-    sum += sign * term;
+    sum.plus(term.mult(sign));
     sign = -sign;
     n += 2;
   }
@@ -41,13 +29,13 @@ function arccot(x, precision) {
 }
 
 function pi_digits(n) {
-  var pi = 4 * (4 * arccot(5, n) - arccot(239, n));
-  return pi / Math.pow(10, 10);
+  var pi = (arccot(5, n).mult(4).minus(arccot(239, n))).mult(4);
+  return pi.div(Math.pow(10, 10));
 }
 
 program
   .option('-d --digits [d]', 'the number of digits of Pi to calculate (defaults to 100)', parseInt)
   .parse(process.argv);
-  
-var n = process.digits || 100;
-console.log('%d first digits of Pi are \n%s', n, pi_digits(n).getAllDigits());
+
+var n = program.digits || 100;
+console.log('The first %d digits of Pi are \n%s', n, pi_digits(n).toString());

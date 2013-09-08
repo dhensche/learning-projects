@@ -11,6 +11,7 @@
     "node": ">= 0.10.x"
   },
   "dependencies": {
-    "commander": "~2.0.0"
+    "commander": "~2.0.0",
+    "big-number": "~0.2.5"
   }
 }
