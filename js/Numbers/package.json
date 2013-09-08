@@ -1,0 +1,16 @@
+{
+  "name": "Numbers_Projects",
+  "version": "1.0.0",
+  "description": "Just my package for Numbers Problems",
+  "author": "Derek Henscheid <derekhenscheid@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhensche/learning-projects.git"
+  },
+  "engines": {
+    "node": ">= 0.10.x"
+  },
+  "dependencies": {
+    "commander": "~2.0.0"
+  }
+}
