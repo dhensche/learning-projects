@@ -5,8 +5,8 @@ var prompt = require('prompt');
 function generatePrimeFactors(n) {
   if (n == 1) return []
   else {
-    var factor, i;
-    for(i = 2; i <= n; i++) {
+    var factor = n, i, sqrt = Math.sqrt(n);
+    for(i = 2; i <= sqrt; i++) {
       if (n % i === 0) {
         factor = i;
         break;
