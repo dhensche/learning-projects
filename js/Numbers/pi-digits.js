@@ -36,8 +36,8 @@ function pi_digits(n) {
 prompt.start();
 prompt.message = 'Pi to n digits';
 
-prompt.get({properties: {digits: {type: 'number', default: 100}}}, function(err, input) {
+prompt.get({properties: {n: {type: 'number', default: 100}}}, function(err, input) {
 	if (err) throw err;
-	var n = input.digits;
+	var n = input.n;
 	console.log('The first %d digits of Pi are \n%s', n, pi_digits(n).toString());
 });
