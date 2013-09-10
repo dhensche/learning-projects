@@ -2,7 +2,7 @@
 
 var prompt = require('prompt'),
     BigNumber = require('big-number').n,
-	cache = [0, 1];
+	  cache = [0, 1];
 	
 prompt.start();
 prompt.message = 'First n numbers of the fibonacci sequence';
