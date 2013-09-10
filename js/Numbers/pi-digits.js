@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var program = require('commander'),
+var prompt = require('prompt'),
     BigNumber = require('big-number').n;
 
 /**
@@ -33,9 +33,11 @@ function pi_digits(n) {
   return pi.div(Math.pow(10, 10));
 }
 
-program
-  .option('-d --digits [d]', 'the number of digits of Pi to calculate (defaults to 100)', parseInt)
-  .parse(process.argv);
+prompt.start();
+prompt.message = 'Pi to n digits';
 
-var n = program.digits || 100;
-console.log('The first %d digits of Pi are \n%s', n, pi_digits(n).toString());
+prompt.get({properties: {digits: {type: 'number', default: 100}}}, function(err, input) {
+	if (err) throw err;
+	var n = input.digits;
+	console.log('The first %d digits of Pi are \n%s', n, pi_digits(n).toString());
+});
