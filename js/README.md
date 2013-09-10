@@ -21,7 +21,7 @@ I will link to each project that I complete. Some will be in this same repo, som
 Numbers
 ---------
 
-**Find PI to the Nth Digit** – Enter a number and have the program generate PI up to that many decimal places. Keep a limit to how far the program will go.
+[**Find PI to the Nth Digit**](Numbers/pi-digits.js) – Enter a number and have the program generate PI up to that many decimal places. Keep a limit to how far the program will go. *Used a library to get big numbers*
 
 **Fibonacci Sequence** – Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number.
 
@@ -54,15 +54,15 @@ Numbers
 Text
 ---------
 
-**Reverse a String** – Enter a string and the program will reverse it and print it out.
+[**Reverse a String**](Text/reverse.js) – Enter a string and the program will reverse it and print it out.
 
-**Pig Latin** – Pig Latin is a game of alterations played on the English language game. To create the Pig Latin form of an English word the initial consonant sound is transposed to the end of the word and an ay is affixed (Ex.: "banana" would yield anana-bay). Read Wikipedia for more information on rules.
+[**Pig Latin**](Text/pig-latin.js) – Pig Latin is a game of alterations played on the English language game. To create the Pig Latin form of an English word the initial consonant sound is transposed to the end of the word and an ay is affixed (Ex.: "banana" would yield anana-bay). Read Wikipedia for more information on rules.
 
-**Count Vowels** – Enter a string and the program counts the number of vowels in the text. For added complexity have it report a sum of each vowel found.
+[**Count Vowels**](Text/count-vowels.js) – Enter a string and the program counts the number of vowels in the text. For added complexity have it report a sum of each vowel found.
 
-**Check if Palindrome** – Checks if the string entered by the user is a palindrome. That is that it reads the same forwards as backwards like “racecar”
+[**Check if Palindrome**](Text/palindrome.js) – Checks if the string entered by the user is a palindrome. That is that it reads the same forwards as backwards like “racecar”
 
-**Count Words in a String** – Counts the number of individual words in a string. For added complexity read these strings in from a text file and generate a summary.
+[**Count Words in a String**](Text/word-count.js) – Counts the number of individual words in a string. For added complexity read these strings in from a text file and generate a summary.
 
 **Text Editor** – Notepad style application that can open, edit, and save text documents. Add syntax highlighting and other features.
 
