@@ -23,7 +23,7 @@ Numbers
 
 [**Find PI to the Nth Digit**](Numbers/pi-digits.js) – Enter a number and have the program generate PI up to that many decimal places. Keep a limit to how far the program will go. *Used a library to get big numbers*
 
-[**Fibonacci Sequence**](/js/Numbers/fibonacci.js) – Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number. *Used a library to get big numbers*
+[**Fibonacci Sequence**](js/Numbers/fibonacci.js) – Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number. *Used a library to get big numbers*
 
 **Prime Factorization** – Have the user enter a number and find all Prime Factors (if there are any) and display them.
 
