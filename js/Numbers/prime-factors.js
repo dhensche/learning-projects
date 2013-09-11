@@ -1,22 +1,19 @@
 #!/usr/bin/env node
 
-var prompt = require('prompt');
+var prompt = require('prompt'),
+    bigint = require('bigint');
 
 function generatePrimeFactors(n) {
-  if (n == 1) return []
-  else {
-    var factor = n, i, sqrt = Math.sqrt(n);
-    for(i = 2; i <= sqrt; i++) {
-      if (n % i === 0) {
-        factor = i;
-        break;
+    var factors = [],
+        sqrt = n.sqrt(), i;
+    for(i = bigint(2); i.le(sqrt); i = i.add(1)) {
+      while(n.mod(i).eq(0)) {
+        factors.push(i);
+        n = n.div(i);
       }
     }
     
-    var arr = generatePrimeFactors(n / factor);
-    arr.push(factor);
-    return arr;
-  }
+    return factors.length ? factors : [n];
 }
 
 prompt.start();
@@ -24,7 +21,6 @@ prompt.message = 'Prime factors of n';
 prompt.get({
   properties: {
     n: {
-      type: 'number',
       required: true,
       pattern: /^\d+$/,
       message: 'Must be a positive whole number'
@@ -33,5 +29,5 @@ prompt.get({
 }, function(err, input) {
 	if (err) throw err;
 	var n = input.n;
-	console.log('The prime factors of %d are \n%s', n, generatePrimeFactors(n));
+	console.log('The prime factors of %d are \n%s', n, generatePrimeFactors(bigint(n)));
 });

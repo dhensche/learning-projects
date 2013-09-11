@@ -11,7 +11,8 @@
     "node": ">= 0.10.x"
   },
   "dependencies": {
-    "big-number": "~0.2.5",
-    "prompt": "~0.2.11"
+    "prompt": "~0.2.11",
+    "commander": "~2.0.0",
+    "bigint": "~0.4.2"
   }
 }

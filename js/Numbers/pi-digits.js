@@ -1,26 +1,26 @@
 #!/usr/bin/env node
 
 var prompt = require('prompt'),
-    BigNumber = require('big-number').n;
+    bigint = require('bigint');
 
 /**
   Uses the Taylor series expansion for arctan
   http://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Infinite_series
 
-  @returns BigNumber
+  @returns bigint
 */
 function arccot(x, precision) {
-  var unity = BigNumber(10).pow(precision + 10),
-      sum = BigNumber(unity.toString()).div(x),
-      xpower = BigNumber(sum.toString()), n = 3, sign = -1, term;
+  var unity = bigint(10).pow(precision + 10),
+      sum = unity.div(x),
+      xpower = sum, n = 3, sign = -1, term;
       
   for(;;) {
-    xpower.div(Math.pow(x, 2));
-    term = BigNumber(xpower.toString()).div(n);
+    xpower = xpower.div(Math.pow(x, 2));
+    term = xpower.div(n);
     
-    if (term.isZero()) break;
+    if (term.eq(0)) break;
     
-    sum.plus(term.mult(sign));
+    sum = sum.add(term.mul(sign));
     sign = -sign;
     n += 2;
   }
@@ -29,7 +29,7 @@ function arccot(x, precision) {
 }
 
 function pi_digits(n) {
-  var pi = (arccot(5, n).mult(4).minus(arccot(239, n))).mult(4);
+  var pi = (arccot(5, n).mul(4).sub(arccot(239, n))).mul(4);
   return pi.div(Math.pow(10, 10));
 }
 
@@ -39,5 +39,5 @@ prompt.message = 'Pi to n digits';
 prompt.get({properties: {n: {type: 'number', default: 100}}}, function(err, input) {
 	if (err) throw err;
 	var n = input.n;
-	console.log('The first %d digits of Pi are \n%s', n, pi_digits(n).toString());
+	console.log('The first %d digits of Pi are \n%s', n, pi_digits(n));
 });
