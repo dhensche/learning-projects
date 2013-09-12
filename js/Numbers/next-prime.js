@@ -1,14 +1,6 @@
 #!/usr/bin/env node
 
-var prompt = require('prompt'),
-    program = require('commander'),
-    bigint = require('bigint');
-
-
-
-prompt.start();
-prompt.message = 'Prime numbers: ';
-prompt.delimiter = '';
+var bigint = require('bigint');
 
 
 function isPrime(n) {
@@ -28,29 +20,46 @@ function isPrime(n) {
   return true;
 };
 
-program
-  .option('-s, --start [s]', 'the number you want to start at')
-  .parse(process.argv);
+function nextPrime(start) {
+  if (start.constructor != bigint) start = bigint(start);
+  for (; !isPrime(start); start = start.add(1));
+  return start;
+}
 
-(function showNext(current) {
-  prompt.get(
-    {
-      properties: {
-        next: {
-          description: 'Show Next?',
-          validator: /y(es)?|n(o)?/,
-          warning: 'Valid options are y(es) or n(o)',
-          default: 'y'
-        }
-      }
-    }, function(err, input) {
-  	  if (err) throw err;
-  	  var show = /y(es)?/.test(input.next);
+
+if (require.main === module) {
+  var prompt = require('prompt'),
+      program = require('commander');
+      
+	program
+	  .option('-s, --start [s]', 'the number you want to start at')
+	  .parse(process.argv);
+
+  prompt.start();
+	prompt.message = 'Prime numbers: ';
+	prompt.delimiter = '';
+	(function showNext(current) {
+	  prompt.get(
+	    {
+	      properties: {
+	        next: {
+	          description: 'Show Next?',
+	          validator: /y(es)?|n(o)?/,
+	          warning: 'Valid options are y(es) or n(o)',
+	          default: 'y'
+	        }
+	      }
+	    }, function(err, input) {
+	  	  if (err) throw err;
+	  	  var show = /y(es)?/.test(input.next);
     
-      if (show) {
-        for (; !isPrime(current); current = current.add(1));
-        console.log('Next Prime is %d', current);
-        showNext(current.add(1));
-      }
-  });
-})(bigint(program.start || 1));
+	      if (show) {
+	        current = nextPrime(current);
+	        console.log('Next Prime is %d', current);
+	        showNext(current.add(1));
+	      }
+	  });
+	})(bigint(program.start || 1));
+}
+
+exports.nextPrime = nextPrime;

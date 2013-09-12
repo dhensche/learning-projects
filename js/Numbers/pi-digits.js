@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-var prompt = require('prompt'),
-    bigint = require('bigint');
+var bigint = require('bigint');
 
 /**
   Uses the Taylor series expansion for arctan
@@ -33,11 +32,18 @@ function pi_digits(n) {
   return pi.div(Math.pow(10, 10));
 }
 
-prompt.start();
-prompt.message = 'Pi to n digits';
+if (require.main === module) {
+	var prompt = require('prompt');
+	
+	prompt.start();
+	prompt.message = 'Pi to n digits';
 
-prompt.get({properties: {n: {type: 'number', default: 100}}}, function(err, input) {
-	if (err) throw err;
-	var n = input.n;
-	console.log('The first %d digits of Pi are \n%s', n, pi_digits(n));
-});
+	prompt.get({properties: {n: {type: 'number', default: 100}}}, function(err, input) {
+		if (err) throw err;
+		var n = input.n;
+		console.log('The first %d digits of Pi are \n%s', n, pi_digits(n));
+	});
+}
+
+exports.arccot = arccot;
+exports.digits = pi_digits;
