@@ -1,7 +1,7 @@
 {
-  "name": "Text_Projects",
+  "name": "js-projects-server",
   "version": "1.0.0",
-  "description": "Just my package for Text Problems",
+  "description": "Just my package for JS Problem solutions",
   "author": "Derek Henscheid <derekhenscheid@gmail.com>",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "prompt": "~0.2.11",
-    "commander": "~2.0.0"
+    "commander": "~2.0.0",
+	"bigint": "~0.4.2"
   }
 }
