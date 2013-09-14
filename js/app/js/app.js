@@ -1,5 +1,9 @@
 'use strict';
 
+function MainCtrl($scope) {
+  console.log($scope);
+}
+
 (function() {
   var app = angular.module('app', []),
       loaded = [];
@@ -25,19 +29,20 @@
   }
 
   app.config(function ($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
-      // save references to the providers
-      app.lazy = {
-          controller: $controllerProvider.register,
-          directive: $compileProvider.directive,
-          filter: $filterProvider.register,
-          factory: $provide.factory,
-          service: $provide.service,
-      };
-      $routeProvider.
-        when('/home', {templateUrl: 'views/home.html'}).
-        when('/numbers', {templateUrl: 'views/numbers.html', resolve: async('numbers')}).
-        when('/text', {templateUrl: 'views/text.html', resolve: async('text')}).
-        otherwise({redirectTo: '/home'});
-      // define routes, etc.
+    // save references to the providers
+    app.lazy = {
+      controller: $controllerProvider.register,
+      directive: $compileProvider.directive,
+      filter: $filterProvider.register,
+      factory: $provide.factory,
+      service: $provide.service,
+    };
+    
+    $routeProvider.
+      when('/home', {templateUrl: 'views/home.html'}).
+      when('/numbers', {templateUrl: 'views/numbers.html', resolve: async('numbers')}).
+      when('/text', {templateUrl: 'views/text.html', resolve: async('text')}).
+      otherwise({redirectTo: '/home'});
+      
   });
 })();

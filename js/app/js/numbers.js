@@ -5,7 +5,7 @@
     $scope.calculate = function() {
       $scope.loading = true;
       $http.get('/pi-digits/' + $scope.n).
-        success(function(data, status, headers, config) {
+        success(function(data) {
           $scope.result = data;
           $scope.loading = false;
         });
@@ -16,7 +16,7 @@
     $scope.calculate = function() {
       $scope.loading = true;
       $http.get('/prime-factors/' + $scope.n).
-        success(function(data, status, headers, config) {
+        success(function(data) {
           $scope.result = data.join(', ');
           $scope.loading = false;
         });
