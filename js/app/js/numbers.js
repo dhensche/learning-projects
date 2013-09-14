@@ -1,5 +1,25 @@
-angular.module('app').lazy.controller('PiDigitsCtrl', function($scope) {
-  $scope.calculate = function() {
-    $scope.result = $scope.n * 314;
-  }
-});
+(function() {
+  var Controller = angular.module('app').lazy.controller;
+  
+  Controller('PiDigitsCtrl', function($scope, $http) {
+    $scope.calculate = function() {
+      $scope.loading = true;
+      $http.get('/pi-digits/' + $scope.n).
+        success(function(data, status, headers, config) {
+          $scope.result = data;
+          $scope.loading = false;
+        });
+    }
+  });
+
+  Controller('PrimeFactorsCtrl', function($scope, $http) {
+    $scope.calculate = function() {
+      $scope.loading = true;
+      $http.get('/prime-factors/' + $scope.n).
+        success(function(data, status, headers, config) {
+          $scope.result = data.join(', ');
+          $scope.loading = false;
+        });
+    }
+  });
+})();

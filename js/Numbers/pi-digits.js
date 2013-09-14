@@ -9,7 +9,7 @@ var bigint = require('bigint');
   @returns bigint
 */
 function arccot(x, precision) {
-  var unity = bigint(10).pow(precision + 10),
+  var unity = bigint(10).pow(precision + 9),
       sum = unity.div(x),
       xpower = sum, n = 3, sign = -1, term;
       
