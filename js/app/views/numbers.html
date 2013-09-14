@@ -1,0 +1,17 @@
+<div class="container">
+  <div ng-controller="PiDigitsCtrl">
+    <form role="form" ng-submit="calculate()">
+      <fieldset>
+        <legend>Find PI to the Nth Digit</legend>
+        <div class="form-group">
+          <label for="digits">Number of Digits</label>
+          <input type="number" class="form-control" ng-model="n" id="digits" placeholder="Enter # of digits">
+        </div>
+      </fieldset>
+    </form>
+    <div>
+      <h4>Results</h4>
+      <pre>{{result}}</pre>
+    </div>
+  </div>
+</div>
