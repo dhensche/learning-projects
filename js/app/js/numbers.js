@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
   var Controller = angular.module('app').lazy.controller;
   

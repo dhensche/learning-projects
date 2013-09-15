@@ -1,9 +1,5 @@
 'use strict';
 
-function MainCtrl($scope) {
-  console.log($scope);
-}
-
 (function() {
   var app = angular.module('app', []),
       loaded = [];
@@ -44,5 +40,11 @@ function MainCtrl($scope) {
       when('/text', {templateUrl: 'views/text.html', resolve: async('text')}).
       otherwise({redirectTo: '/home'});
       
+  });
+  
+  app.run(function($rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function(e, current) {
+      $rootScope.path = location.hash;
+    });
   });
 })();
