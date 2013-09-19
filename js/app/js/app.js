@@ -31,7 +31,7 @@
       directive: $compileProvider.directive,
       filter: $filterProvider.register,
       factory: $provide.factory,
-      service: $provide.service,
+      service: $provide.service
     };
     
     $routeProvider.
