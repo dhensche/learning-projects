@@ -7,3 +7,5 @@ Languages In Progress
 ========
 
 [JavaScript](js) - Uses node and npm to manage packages.
+
+[Scala](scala) - Uses scala...
