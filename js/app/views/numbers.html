@@ -28,7 +28,10 @@
     <div data-problem data-title="Cost to floor a room with tiles">
       <div class="form-group">
         <label for="n4">Tile Cost</label>
-        <input type="text" class="form-control" data-ng-model="data.cost" id="n4" />
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input type="text" class="form-control" data-ng-model="data.cost" id="n4" />
+        </div>
       </div>
       <div class="form-group">
         <label for="n5">Length of Room</label>
@@ -39,6 +42,14 @@
         <input type="text" class="form-control" data-ng-model="data.width" id="n6" />
       </div>
       <input type="submit" class="sr-only" />
+    </div>
+  </div>
+  <div data-ng-controller="NextPrimeCtrl">
+    <div data-problem data-title="Find the next prime after N">
+      <div class="form-group">
+        <label for="n7">N</label>
+        <input type="text" class="form-control" data-ng-model="data.n" id="n7" />
+      </div>
     </div>
   </div>
 </div>

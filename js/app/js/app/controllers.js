@@ -11,9 +11,17 @@ app.controller('PrimeFactorsCtrl', function PrimeFactorsCtrl($scope, $http, solv
   function path() {return '/prime-factors/' + $scope.data.n;};
   $scope.calculate = solver.calculate($scope, path, solver.join);
 });
+
 app.controller('PiDigitsCtrl', function PiDigitsCtrl($scope, $http, solver) {
   $scope.data = {};
   function path() {return '/pi-digits/' + $scope.data.n;};
+  
+  $scope.calculate = solver.calculate($scope, path, solver.identity);
+});
+
+app.controller('NextPrimeCtrl', function NextPrimeCtrl($scope, $http, solver) {
+  $scope.data = {};
+  function path() {return '/next-prime/' + $scope.data.n;};
   
   $scope.calculate = solver.calculate($scope, path, solver.identity);
 });
@@ -30,5 +38,5 @@ app.controller('TileCostCtrl', function TileCostCtrl($scope, $http, solver) {
   function path() {
     return ['/tile-cost',$scope.data.cost, $scope.data.length, $scope.data.width].join('/');
   };
-  $scope.calculate = solver.calculate($scope, path, solver.identity);
+  $scope.calculate = solver.calculate($scope, path, solver.monetized);
 });
