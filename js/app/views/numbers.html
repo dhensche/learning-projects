@@ -1,31 +1,31 @@
 <div class="container">
-  <div ng-controller="PiDigitsCtrl">
-    <form role="form" ng-submit="calculate()">
+  <div data-ng-controller="PiDigitsCtrl">
+    <form role="form" data-ng-submit="calculate()">
       <fieldset>
         <legend>Find PI to the Nth Digit</legend>
         <div class="form-group">
           <label for="digits">Number of Digits</label>
-          <input type="number" class="form-control" ng-model="n" id="digits" placeholder="Enter # of digits">
+          <input type="number" class="form-control" data-ng-model="n" id="digits" placeholder="Enter # of digits">
         </div>
       </fieldset>
     </form>
     <div>
-      <h4>Results <i class="icon-rotate-right icon-spin" ng-show="loading"></i></h4>
+      <h4>Results <i class="icon-rotate-right icon-spin" data-ng-show="loading"></i></h4>
       <pre>{{result}}</pre>
     </div>
   </div>
-  <div ng-controller="PrimeFactorsCtrl">
-    <form role="form" ng-submit="calculate()">
+  <div data-ng-controller="PrimeFactorsCtrl">
+    <form role="form" data-ng-submit="calculate()">
       <fieldset>
         <legend>Find the prime factors of N</legend>
         <div class="form-group">
           <label for="n">N</label>
-          <input type="number" class="form-control" ng-model="n" id="n">
+          <input type="number" class="form-control" data-ng-model="n" id="n">
         </div>
       </fieldset>
     </form>
     <div>
-      <h4>Results <i class="icon-rotate-right icon-spin" ng-show="loading"></i></h4>
+      <h4>Results <i class="icon-rotate-right icon-spin" data-ng-show="loading"></i></h4>
       <pre>{{result}}</pre>
     </div>
   </div>

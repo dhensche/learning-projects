@@ -22,8 +22,8 @@ require('./app/routes/index')(app);
 // any routes are hit:
 app.use(app.router);
 
-app.listen(8000);
-console.log('listening on port 8000');
+app.listen(9000);
+console.log('listening on port 9000');
 console.log('try:');
 console.log('  GET /hello.txt');
 console.log('  GET /js/app.js');
