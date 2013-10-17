@@ -1,0 +1,16 @@
+app.service('solver', function solver($http) {
+  this.identity = function(d) {return d;};
+  this.join = function(d) {return d.join(', ');};
+  
+  this.calculate = function calculate($scope, path, handler) {
+    return function() {
+      $scope.loading = true;
+      $http.get(path()).success(function succ(data) {
+        $scope.result = handler(data);
+        $scope.loading = false;
+      }).error(function err() {
+        $scope.loading = false;
+      });
+    }
+  }
+});

@@ -1,18 +1,27 @@
 <div class="container">
-  <h1>Numbers <i class="icon-rotate-right icon-spin" data-ng-show="loading"></i></h1>
-  <div data-ng-repeat="(id, problem) in problems">
-    <form role="form" data-ng-submit="calculate(id)">
-      <fieldset>
-        <legend>{{ problem.title }}</legend>
-        <div class="form-group">
-          <label for="digits">{{ problem.label }}</label>
-          <input type="number" class="form-control" data-ng-model="problem.n" id="digits">
-        </div>
-      </fieldset>
-    </form>
-    <div>
-      <h4>Results</h4>
-      <pre>{{ problem.result }}</pre>
+  <h1>Numbers</h1>
+  <div data-ng-controller="PrimeFactorsCtrl">
+    <div data-problem data-title="Find the prime factors of N">
+      <div class="form-group">
+        <label for="n1">N</label>
+        <input type="text" class="form-control" data-ng-model="data.n" id="n1" />
+      </div>
+    </div>
+  </div>
+  <div data-ng-controller="PiDigitsCtrl">
+    <div data-problem data-title="Find PI to the Nth Digit">
+      <div class="form-group">
+        <label for="n2">Number of Digits</label>
+        <input type="text" class="form-control" data-ng-model="data.n" id="n2" />
+      </div>
+    </div>
+  </div>
+  <div data-ng-controller="FibonacciCtrl">
+    <div data-problem data-title="First N numbers in Fibonacci sequence">
+      <div class="form-group">
+        <label for="n3">N</label>
+        <input type="text" class="form-control" data-ng-model="data.n" id="n3" />
+      </div>
     </div>
   </div>
 </div>

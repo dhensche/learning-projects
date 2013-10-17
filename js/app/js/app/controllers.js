@@ -6,37 +6,21 @@ app.controller('NavBarCtrl', function NavBarCtrl($scope, $location) {
   }
 });
 
-app.controller('NumbersControl', function NumbersControl($scope, $http) {
-  $scope.problems = {
-    'pi-digits': {
-      title: 'Find PI to the Nth Digit',
-      label: 'Number of Digits',
-      url: '/pi-digits/',
-      result: '',
-      handle: function(d) {
-        return d;
-      }
-    },
-    'prime-factors': {
-      title: 'Find the prime factors of N',
-      url: '/prime-factors/',
-      label: 'N',
-      result: '',
-      handle: function(d) {
-        return d.join(', ');
-      }
-    }
-  }
+app.controller('PrimeFactorsCtrl', function PrimeFactorsCtrl($scope, $http, solver) {
+  $scope.data = {};
+  function path() {return '/prime-factors/' + $scope.data.n;};
+  $scope.calculate = solver.calculate($scope, path, solver.join);
+});
+app.controller('PiDigitsCtrl', function PiDigitsCtrl($scope, $http, solver) {
+  $scope.data = {};
+  function path() {return '/pi-digits/' + $scope.data.n;};
   
-  $scope.calculate = function calculate(id) {
-    var problem = $scope.problems[id];
-    if (problem) {
-      $scope.loading = true;
-      $http.get(problem.url + problem.n)
-      .success(function succ(data) {
-        problem.result = problem.handle(data);
-        $scope.loading = false;
-      });
-    }
-  }
+  $scope.calculate = solver.calculate($scope, path, solver.identity);
+});
+
+app.controller('FibonacciCtrl', function PiDigitsCtrl($scope, $http, solver) {
+  $scope.data = {};
+  function path() {return '/fibonacci/' + $scope.data.n;};
+  
+  $scope.calculate = solver.calculate($scope, path, solver.join);
 });
