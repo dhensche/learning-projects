@@ -1,32 +1,18 @@
 <div class="container">
-  <div data-ng-controller="PiDigitsCtrl">
-    <form role="form" data-ng-submit="calculate()">
+  <h1>Numbers <i class="icon-rotate-right icon-spin" data-ng-show="loading"></i></h1>
+  <div data-ng-repeat="(id, problem) in problems">
+    <form role="form" data-ng-submit="calculate(id)">
       <fieldset>
-        <legend>Find PI to the Nth Digit</legend>
+        <legend>{{ problem.title }}</legend>
         <div class="form-group">
-          <label for="digits">Number of Digits</label>
-          <input type="number" class="form-control" data-ng-model="n" id="digits" placeholder="Enter # of digits">
+          <label for="digits">{{ problem.label }}</label>
+          <input type="number" class="form-control" data-ng-model="problem.n" id="digits">
         </div>
       </fieldset>
     </form>
     <div>
-      <h4>Results <i class="icon-rotate-right icon-spin" data-ng-show="loading"></i></h4>
-      <pre>{{result}}</pre>
-    </div>
-  </div>
-  <div data-ng-controller="PrimeFactorsCtrl">
-    <form role="form" data-ng-submit="calculate()">
-      <fieldset>
-        <legend>Find the prime factors of N</legend>
-        <div class="form-group">
-          <label for="n">N</label>
-          <input type="number" class="form-control" data-ng-model="n" id="n">
-        </div>
-      </fieldset>
-    </form>
-    <div>
-      <h4>Results <i class="icon-rotate-right icon-spin" data-ng-show="loading"></i></h4>
-      <pre>{{result}}</pre>
+      <h4>Results</h4>
+      <pre>{{ problem.result }}</pre>
     </div>
   </div>
 </div>

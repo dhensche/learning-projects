@@ -6,25 +6,37 @@ app.controller('NavBarCtrl', function NavBarCtrl($scope, $location) {
   }
 });
 
-app.controller('PiDigitsCtrl', function PiDigitsCtrl($scope, $http) {
-  $scope.calculate = function() {
-    $scope.loading = true;
-    $http.get('/pi-digits/' + $scope.n)
-      .success(function(data) {
-        $scope.result = data;
+app.controller('NumbersControl', function NumbersControl($scope, $http) {
+  $scope.problems = {
+    'pi-digits': {
+      title: 'Find PI to the Nth Digit',
+      label: 'Number of Digits',
+      url: '/pi-digits/',
+      result: '',
+      handle: function(d) {
+        return d;
+      }
+    },
+    'prime-factors': {
+      title: 'Find the prime factors of N',
+      url: '/prime-factors/',
+      label: 'N',
+      result: '',
+      handle: function(d) {
+        return d.join(', ');
+      }
+    }
+  }
+  
+  $scope.calculate = function calculate(id) {
+    var problem = $scope.problems[id];
+    if (problem) {
+      $scope.loading = true;
+      $http.get(problem.url + problem.n)
+      .success(function succ(data) {
+        problem.result = problem.handle(data);
         $scope.loading = false;
       });
+    }
   }
 });
-
-app.controller('PrimeFactorsCtrl', function PrimeFactorsCtrl($scope, $http) {
-  $scope.calculate = function() {
-    $scope.loading = true;
-    $http.get('/prime-factors/' + $scope.n)
-      .success(
-        function(data) {
-        $scope.result = data.join(', ');
-        $scope.loading = false;
-      });
-  }
-})
