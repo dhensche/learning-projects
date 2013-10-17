@@ -24,3 +24,11 @@ app.controller('FibonacciCtrl', function PiDigitsCtrl($scope, $http, solver) {
   
   $scope.calculate = solver.calculate($scope, path, solver.join);
 });
+
+app.controller('TileCostCtrl', function TileCostCtrl($scope, $http, solver) {
+  $scope.data = {};
+  function path() {
+    return ['/tile-cost',$scope.data.cost, $scope.data.length, $scope.data.width].join('/');
+  };
+  $scope.calculate = solver.calculate($scope, path, solver.identity);
+});

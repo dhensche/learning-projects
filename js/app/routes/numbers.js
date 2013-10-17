@@ -1,5 +1,6 @@
 var PiDigits = require('../../Numbers/pi-digits'),
     PrimeFactors = require('../../Numbers/prime-factors'),
+    TileCost = require('../../Numbers/tile-cost'),
     Fibonacci = require('../../Numbers/fibonacci.js');
 
 module.exports = function(app){
@@ -24,5 +25,9 @@ module.exports = function(app){
           return factor.toString();
         })
       );
+    });
+    
+    app.get(/tile-cost\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/, function(req, res) {
+      res.send(TileCost.cost(req.params[2], req.params[1], req.params[0]));
     });
 }

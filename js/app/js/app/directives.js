@@ -2,6 +2,7 @@ app.directive('results', function problem() {
   return {
     require: '^ngController',
     restrict: 'A',
+    replace: true,
     template:
     '<div>' + 
       '<h4>Results <i class="icon-rotate-right icon-spin" data-ng-show="loading"></i></h4>' +
@@ -15,6 +16,7 @@ app.directive('panel', function panel() {
     restrict: 'A',
     scope: {title: '@'},
     transclude: true,
+    replace: true,
     template:
     '<div class="panel panel-default">' +
       '<div class="panel-heading"><h3 class="panel-title">{{ title }}</h3></div>' +
