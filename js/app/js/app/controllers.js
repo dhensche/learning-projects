@@ -7,6 +7,7 @@ app.controller('NavBarCtrl', function NavBarCtrl($scope, $location) {
 });
 
 app.controller('NumbersControl', function NumbersControl($scope, solver) {
+  $scope.title = 'Numbers';
   $scope.solver = solver;
   $scope.problems = [
     {
