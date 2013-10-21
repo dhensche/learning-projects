@@ -56,8 +56,7 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
         }, width: {
           label: 'Width of Room'
         }
-      },
-      path: function path() {
+      }, path: function path() {
         return ['/tile-cost',
                 this.fields.cost.data, 
                 this.fields.length.data, 
@@ -79,6 +78,22 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
                 this.fields.periods.data].join('/');
       },
       handler: solver.identity
+    }, {
+      title: 'Calculate change (denominations from $100 to $0.01)',
+      fields: {
+        cash: { label: 'Amount of money provided' },
+        price: { label: 'Price' }
+      }, path: function path() {
+        return ['/change',
+                this.fields.cash.data,
+                this.fields.price.data].join('/');
+      },
+      handler: function transform(data) {
+        return data.map(function mapChange(d) {
+          var label = d.count == 1 ? d.label : (d.label === 'penny' ? 'pennies' : d.label + 's');
+          return d.count + ' ' + label;
+        }).join('\n');
+      }
     }
   ]
 });

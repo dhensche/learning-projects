@@ -9,6 +9,7 @@ app.service('solver', function solver($http, $filter) {
       problem.result = problem.handler(data);
       problem.loading = false;
     }).error(function err() {
+      problem.result = 'There was an error processing your request';
       problem.loading = false;
     });
   }

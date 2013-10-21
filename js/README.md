@@ -20,9 +20,9 @@ Numbers
 
 [**Find Cost of Tile to Cover W x L Floor**](Numbers/tile-cost.js) – Calculate the total cost of tile it would take to cover a floor plan of width and length, using a cost entered by the user.
 
-**Mortgage Calculator** – Calculate the monthly payments of a fixed term mortgage over given Nth terms at a given interest rate. Also figure out how long it will take the user to pay back the loan.
+[**Mortgage Calculator**](Numbers/mortgage.js) – Calculate the monthly payments of a fixed term mortgage over given Nth terms at a given interest rate. Also figure out how long it will take the user to pay back the loan.
 
-**Change Return Program** – The user enters a cost and then the amount of money given. The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change.
+[**Change Return Program**](Numbers/change.js) – The user enters a cost and then the amount of money given. The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change.
 
 **Binary to Decimal and Back Converter** – Develop a converter to convert a decimal number to binary or a binary number to its decimal equivalent.
 

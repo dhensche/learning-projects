@@ -3,7 +3,8 @@ var PiDigits = require('../../Numbers/pi-digits'),
     TileCost = require('../../Numbers/tile-cost'),
     NextPrime = require('../../Numbers/next-prime'),
     Fibonacci = require('../../Numbers/fibonacci'),
-    Mortgage = require('../../Numbers/mortgage');
+    Mortgage = require('../../Numbers/mortgage'),
+    Change = require('../../Numbers/change');
 
 module.exports = function(app){
     app.get('/pi-digits/:n', function(req, res) {
@@ -40,5 +41,9 @@ module.exports = function(app){
     app.get(/mortgage\/(\d+(?:\.\d+)?)\/(0?(?:\.\d+))\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/, function(req, res) {
       var mortgage = new Mortgage(req.params[0], req.params[1], req.params[2], req.params[3]);
       res.send(mortgage.monthlyPayment().toString());
+    });
+    
+    app.get(/change\/([\d.]+)\/([\d.]+)/, function(req, res) {
+      res.send(Change.calculate(parseFloat(req.params[0]), parseFloat(req.params[1])));
     });
 }
