@@ -2,7 +2,8 @@ var PiDigits = require('../../Numbers/pi-digits'),
     PrimeFactors = require('../../Numbers/prime-factors'),
     TileCost = require('../../Numbers/tile-cost'),
     NextPrime = require('../../Numbers/next-prime'),
-    Fibonacci = require('../../Numbers/fibonacci.js');
+    Fibonacci = require('../../Numbers/fibonacci'),
+    Mortgage = require('../../Numbers/mortgage');
 
 module.exports = function(app){
     app.get('/pi-digits/:n', function(req, res) {
@@ -34,5 +35,10 @@ module.exports = function(app){
     
     app.get(/tile-cost\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/, function(req, res) {
       res.send(TileCost.cost(req.params[2], req.params[1], req.params[0]));
+    });
+    
+    app.get(/mortgage\/(\d+(?:\.\d+)?)\/(0?(?:\.\d+))\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/, function(req, res) {
+      var mortgage = new Mortgage(req.params[0], req.params[1], req.params[2], req.params[3]);
+      res.send(mortgage.monthlyPayment().toString());
     });
 }

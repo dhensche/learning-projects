@@ -64,6 +64,21 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
                 this.fields.width.data].join('/');
       },
       handler: solver.monetized
+    }, {
+      title: 'Monthly fee for a fixed rate mortgage',
+      fields: {
+        principal: { label: 'Principal' },
+        rate: { label: 'Yearly interest rate' },
+        length: { label: 'Length of mortgage in years' },
+        periods: { label: 'Number of payment periods per year (usually 12)' }
+      }, path: function path() {
+        return ['/mortgage',
+                this.fields.principal.data,
+                this.fields.rate.data / 100,
+                this.fields.length.data,
+                this.fields.periods.data].join('/');
+      },
+      handler: solver.identity
     }
   ]
 });
