@@ -77,7 +77,7 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
                 this.fields.length.data,
                 this.fields.periods.data].join('/');
       },
-      handler: solver.identity
+      handler: solver.monetized
     }, {
       title: 'Calculate change (denominations from $100 to $0.01)',
       fields: {
