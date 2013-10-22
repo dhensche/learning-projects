@@ -1,18 +1,16 @@
-<div class="container">
-  <h1>{{ title }}</h1>
-  <accordion>
-    <panel data-ng-repeat="problem in problems" title="{{ problem.title }}">
-      <form data-ng-submit="solver.calculate(problem)">
-        <div class="form-group" data-ng-repeat="(name,field) in problem.fields">
-          <label for="input-{{ $id }}">{{ field.label }}</label>
-          <input type="text" class="form-control" data-ng-model="field.data" id="input-{{ $id }}" />
-        </div>
-        <input type="submit" class="sr-only" />
-        <div>
-          <h4>Results <i class="icon-rotate-right icon-spin" data-ng-show="problem.loading"></i></h4>
-          <pre data-ng-show="problem.result != null">{{ problem.result }}</pre>
-        </div>
-      </form>
-    </panel>
-  </accordion>
-</div>
+<h1>{{ title }}</h1>
+<accordion>
+  <panel data-ng-repeat="problem in problems" title="{{ problem.title }}">
+    <form data-ng-submit="solver.calculate(problem)">
+      <div class="form-group" data-ng-repeat="(name,field) in problem.fields">
+        <label for="input-{{ $id }}">{{ field.label }}</label>
+        <input type="text" class="form-control" data-ng-model="field.data" id="input-{{ $id }}" />
+      </div>
+      <input type="submit" class="sr-only" />
+      <div>
+        <h4>Results <i class="icon-rotate-right icon-spin" data-ng-show="problem.loading"></i></h4>
+        <pre data-ng-show="problem.result != null">{{ problem.result }}</pre>
+      </div>
+    </form>
+  </panel>
+</accordion>
