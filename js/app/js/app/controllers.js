@@ -94,6 +94,20 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
           return d.count + ' ' + label;
         }).join('\n');
       }
+    }, {
+      title: 'Convert numbers between any bases between 2 and 36',
+      fields: {
+        convertible: { label: 'The value you would like converted' },
+        inbase: { label: 'The base of the input value (2 - 36)' },
+        outbase: { label: 'The base you would like your number converted to (2 - 36)' }
+      }, path: function path() {
+        return ['/convert',
+                this.fields.convertible.data,
+                this.fields.inbase.data,
+                this.fields.outbase.data
+                ].join('/');
+      },
+      handler: solver.identity
     }
   ]
 });

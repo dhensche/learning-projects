@@ -4,7 +4,8 @@ var PiDigits = require('../../Numbers/pi-digits'),
     NextPrime = require('../../Numbers/next-prime'),
     Fibonacci = require('../../Numbers/fibonacci'),
     Mortgage = require('../../Numbers/mortgage'),
-    Change = require('../../Numbers/change');
+    Change = require('../../Numbers/change'),
+    Converter = require('../../Numbers/converter');
 
 module.exports = function(app){
     app.get('/pi-digits/:n', function(req, res) {
@@ -46,4 +47,9 @@ module.exports = function(app){
     app.get(/change\/([\d.]+)\/([\d.]+)/, function(req, res) {
       res.send(Change.calculate(parseFloat(req.params[0]), parseFloat(req.params[1])));
     });
+    
+    app.get(/convert\/(-?[a-zA-Z0-9]+)\/(\d+)\/(\d+)/, function(req, res) {
+      res.send(Converter.convert(req.params[0], req.params[1], req.params[2]));
+    });
+    
 }
