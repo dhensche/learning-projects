@@ -1,0 +1,33 @@
+<div class="form-group">
+  <label for="principal-{{ $id }}">Principal</label>
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <input type="text" class="form-control" data-ng-model="problem.data.principal" id="principal-{{ $id }}" />
+  </div>
+</div>
+<div class="form-group">
+  <label for="rate-{{ $id }}">Yearly interest rate</label>
+  <input type="text" class="form-control" data-ng-model="problem.data.rate" id="rate-{{ $id }}" />
+</div>
+<div class="form-group">
+  <label for="length-{{ $id }}">Length of mortgage in years</label>
+  <input type="text" class="form-control" data-ng-model="problem.data.length" id="length-{{ $id }}" />
+</div>
+<div class="form-group">
+  <label for="periods-{{ $id }}">Number of payment periods per year</label>
+  <input type="text" class="form-control" data-ng-model="problem.data.periods" id="periods-{{ $id }}" placeholder="12" />
+</div>
+<div class="form-group">
+  <label for="action-{{ $id }}">Calculation</label>
+  <select class="form-control" data-ng-model="problem.data.action" id="action-{{ $id }}">
+    <option label="Monthly Payment" value="monthlyPayment"/>
+    <option label="Payments Left" value="periodsLeft">
+  </select>
+</div>
+<div class="form-group" data-ng-show="problem.data.action == 'periodsLeft'">
+  <label for="payment-{{ $id }}">Payment</label>
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <input type="text" class="form-control" data-ng-model="problem.data.payment" id="payment-{{ $id }}" />
+  </div>
+</div>

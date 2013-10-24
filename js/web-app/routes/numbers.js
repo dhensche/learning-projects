@@ -41,7 +41,7 @@ module.exports = function(app){
     
     app.get(/mortgage\/(\d+(?:\.\d+)?)\/(0?(?:\.\d+))\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/, function(req, res) {
       var mortgage = new Mortgage(req.params[0], req.params[1], req.params[2], req.params[3]);
-      res.send(mortgage.monthlyPayment().toString());
+      res.send(mortgage[req.query.action](req.query.payment).toString());
     });
     
     app.get(/change\/([\d.]+)\/([\d.]+)/, function(req, res) {

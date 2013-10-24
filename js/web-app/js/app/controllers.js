@@ -51,19 +51,25 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
     }, 
     {
       title: 'Monthly fee for a fixed rate mortgage',
-      fields: {
-        principal: { label: 'Principal' },
-        rate: { label: 'Yearly interest rate' },
-        length: { label: 'Length of mortgage in years' },
-        periods: { label: 'Number of payment periods per year (usually 12)' }
-      }, path: function path() {
-        return ['/mortgage',
-                this.fields.principal.data,
-                this.fields.rate.data / 100,
-                this.fields.length.data,
-                this.fields.periods.data].join('/');
+      form: 'views/problems/numbers/mortgage.html',
+      data: {},
+      path: function path() {
+        return [['/mortgage',
+                this.data.principal,
+                this.data.rate / 100,
+                this.data.length,
+                this.data.periods].join('/'),
+                '?action=', this.data.action,
+                '&payment=', this.data.payment].join('');
       },
-      handler: solver.monetized
+      handler: function transform(data) {
+        if (this.data.action === 'monthlyPayment') {
+          return solver.monetized(data);
+        } else {
+          return data + ' payments left';
+        }
+          
+      }
     }, {
       title: 'Calculate change (denominations from $100 to $0.01)',
       fields: {
