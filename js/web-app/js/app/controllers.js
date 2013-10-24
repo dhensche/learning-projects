@@ -12,58 +12,44 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
   $scope.problems = [
     {
       title: 'Find the prime factors of N',
-      fields: {
-        n: {
-          label: 'N'
-        }
-      },
-      path: function path() {return '/prime-factors/' + this.fields.n.data;},
+      form: 'views/problems/single-input.html',
+      label: 'N',
+      path: function path() {return '/prime-factors/' + this.data.n;},
       handler: solver.join
-    }, {
+    },
+    {
       title: 'Find PI to the Nth Digit',
-      fields: {
-        n: {
-          label: 'Number of Digits'
-        }
-      },
-      path: function path() {return '/pi-digits/' + this.fields.n.data;},
+      form: 'views/problems/single-input.html',
+      label: 'Number of Digits',
+      path: function path() {return '/pi-digits/' + this.data.n;},
       handler: solver.identity
-    }, {
+    },
+    {
       title: 'First N numbers in Fibonacci sequence',
-      fields: {
-        n: {
-          label: 'N'
-        }
-      },
-      path: function path() {return '/fibonacci/' + this.fields.n.data;},
+      form: 'views/problems/single-input.html',
+      label: 'N',
+      path: function path() {return '/fibonacci/' + this.data.n;},
       handler: solver.join
-    }, {
+    },
+    {
       title: 'Find the next prime after N',
-      fields: {
-        n: {
-          label: 'N'
-        }
-      },
-      path: function path() {return '/next-prime/' + this.fields.n.data;},
+      form: 'views/problems/single-input.html',
+      label: 'N',
+      path: function path() {return '/next-prime/' + this.data.n;},
       handler: solver.identity
-    }, {
+    },
+    {
       title: 'Cost to floor a room with tiles',
-      fields: {
-        cost: {
-          label: 'Tile Cost'
-        }, length: {
-          label: 'Length of Room'
-        }, width: {
-          label: 'Width of Room'
-        }
-      }, path: function path() {
+      form: 'views/problems/numbers/tile-cost.html',
+      path: function path() {
         return ['/tile-cost',
-                this.fields.cost.data, 
-                this.fields.length.data, 
-                this.fields.width.data].join('/');
+                this.data.cost, 
+                this.data.length, 
+                this.data.width].join('/');
       },
       handler: solver.monetized
-    }, {
+    }, 
+    {
       title: 'Monthly fee for a fixed rate mortgage',
       fields: {
         principal: { label: 'Principal' },

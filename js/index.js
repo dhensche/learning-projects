@@ -11,9 +11,9 @@ app.use(express.logger('dev'));
 // that you pass it. In this case "GET /js/app.js"
 // will look for "./public/js/app.js".
 
-app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/web-app'));
 
-require('./app/routes/index')(app);
+require('./web-app/routes/index')(app);
 // this examples does not have any routes, however
 // you may `app.use(app.router)` before or after these
 // static() middleware. If placed before them your routes
