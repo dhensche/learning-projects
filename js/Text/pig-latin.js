@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 function translate(text) {
-  return text.split(/\s+/).map(function(word) {
-    var parts = word.match(/([^aeiou]*)(.*)/);
+  return text.split(/[^\w]+/).map(function(word) {
+    var parts = word.match(/([^aeiou]*)(.*)/i);
     return [parts[2], '-', parts[1], 'ay'].join('');
   }).join(' ');
 }

@@ -11,8 +11,22 @@ app.controller('TextControl', function TextControl($scope, solver) {
   $scope.solver = solver;
   $scope.problems = [
     {
+      title: 'Reverse the text',
+      form: 'views/problems/text/basic-text-area.html',
+      data: {},
+      path: function path() {return '/text/reverse?text=' + this.data.text;},
+      handler: solver.identity
+    },
+    {
+      title: 'Translate to pig latin',
+      form: 'views/problems/text/basic-text-area.html',
+      data: {},
+      path: function path() {return '/text/pig-latin?text=' + this.data.text;},
+      handler: solver.identity
+    },
+    {
       title: 'Count the vowels in text',
-      form: 'views/problems/text/count-vowels.html',
+      form: 'views/problems/text/basic-text-area.html',
       data: {},
       path: function path() {return '/text/count-vowels?text=' + this.data.text;},
       handler: function handler(data) {
