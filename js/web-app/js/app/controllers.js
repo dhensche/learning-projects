@@ -14,6 +14,7 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
       title: 'Find the prime factors of N',
       form: 'views/problems/single-input.html',
       label: 'N',
+      data: {},
       path: function path() {return '/prime-factors/' + this.data.n;},
       handler: solver.join
     },
@@ -21,6 +22,7 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
       title: 'Find PI to the Nth Digit',
       form: 'views/problems/single-input.html',
       label: 'Number of Digits',
+      data: {},
       path: function path() {return '/pi-digits/' + this.data.n;},
       handler: solver.identity
     },
@@ -28,6 +30,7 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
       title: 'First N numbers in Fibonacci sequence',
       form: 'views/problems/single-input.html',
       label: 'N',
+      data: {},
       path: function path() {return '/fibonacci/' + this.data.n;},
       handler: solver.join
     },
@@ -35,12 +38,14 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
       title: 'Find the next prime after N',
       form: 'views/problems/single-input.html',
       label: 'N',
+      data: {},
       path: function path() {return '/next-prime/' + this.data.n;},
       handler: solver.identity
     },
     {
       title: 'Cost to floor a room with tiles',
       form: 'views/problems/numbers/tile-cost.html',
+      data: {},
       path: function path() {
         return ['/tile-cost',
                 this.data.cost, 
@@ -70,15 +75,14 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
         }
           
       }
-    }, {
+    },
+    {
       title: 'Calculate change (denominations from $100 to $0.01)',
-      fields: {
-        cash: { label: 'Amount of money provided' },
-        price: { label: 'Price' }
-      }, path: function path() {
+      form: 'views/problems/numbers/change.html',
+      path: function path() {
         return ['/change',
-                this.fields.cash.data,
-                this.fields.price.data].join('/');
+                this.data.cash,
+                this.data.price].join('/');
       },
       handler: function transform(data) {
         return data.map(function mapChange(d) {
@@ -86,17 +90,16 @@ app.controller('NumbersControl', function NumbersControl($scope, solver) {
           return d.count + ' ' + label;
         }).join('\n');
       }
-    }, {
+    },
+    {
       title: 'Convert numbers between any bases between 2 and 36',
-      fields: {
-        convertible: { label: 'The value you would like converted' },
-        inbase: { label: 'The base of the input value (2 - 36)' },
-        outbase: { label: 'The base you would like your number converted to (2 - 36)' }
-      }, path: function path() {
+      form: 'views/problems/numbers/convert.html',
+      data: {},
+      path: function path() {
         return ['/convert',
-                this.fields.convertible.data,
-                this.fields.inbase.data,
-                this.fields.outbase.data
+                this.data.n,
+                this.data.inputBase,
+                this.data.outputBase
                 ].join('/');
       },
       handler: solver.identity
