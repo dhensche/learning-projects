@@ -35,7 +35,31 @@ app.controller('TextControl', function TextControl($scope, solver) {
           results.push([vowel, ': ', data[vowel]].join(''));
         }
         return results.sort().join('\n');
-      } 
+      }
+    },
+    {
+      title: 'Check if text is a palindrome',
+      form: 'views/problems/text/basic-text-area.html',
+      data: {},
+      path: function path() {
+        return '/text/palindrome?text=' + this.data.text.toLowerCase();
+      },
+      handler: solver.identity
+    },
+    {
+      title: 'Count the words in text',
+      form: 'views/problems/text/basic-text-area.html',
+      data: {},
+      path: function path() {
+        return '/text/word-count?text=' + (this.data.text || '');
+      },
+      handler: function handler(data) {
+        var results = [];
+        for (var word in data) {
+          results.push([word, ': ', data[word]].join(''));
+        }
+        return results.sort().join('\n');
+      }
     }
   ];
 });

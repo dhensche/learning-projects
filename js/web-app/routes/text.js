@@ -1,8 +1,26 @@
 var VowelCounter = require('../../Text/count-vowels'),
     Reverser = require('../../Text/reverse'),
-    PigLatin = require('../../Text/pig-latin');
+    PigLatin = require('../../Text/pig-latin'),
+    Palindrome = require('../../Text/palindrome'),
+    WordCount = require('../../Text/word-count');
 
 var endpoints = [];
+
+endpoints.push({
+  method: 'get',
+  path: '/reverse',
+  handler: function handler(req, res) {
+    res.send(Reverser.reverse(req.query.text));
+  }
+});
+
+endpoints.push({
+  method: 'get',
+  path: '/pig-latin',
+  handler: function handler(req, res) {
+    res.send(PigLatin.translate(req.query.text));
+  }
+});
 
 endpoints.push({
   method: 'get',
@@ -14,17 +32,17 @@ endpoints.push({
 
 endpoints.push({
   method: 'get',
-  path: '/reverse',
+  path: '/palindrome',
   handler: function handler(req, res) {
-    res.json(Reverser.reverse(req.query.text));
+    res.send(Palindrome.test(req.query.text));
   }
 });
 
 endpoints.push({
   method: 'get',
-  path: '/pig-latin',
+  path: '/word-count',
   handler: function handler(req, res) {
-    res.json(PigLatin.translate(req.query.text));
+    res.json(WordCount.count(req.query.text));
   }
 });
 

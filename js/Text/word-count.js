@@ -2,12 +2,14 @@
 
 var program = require('commander');
     
-function countWords(text, max, limit) {
+function countWords(text) {
   var cleansed = text.replace(/[^\w\s']/g, '').toLowerCase(),
       counts = {};
       
   cleansed.split(/\s+/).forEach(function counter(word) {
-    counts[word] = counts[word] ? counts[word] + 1 : 1; 
+    if (word) {
+      counts[word] = counts[word] ? counts[word] + 1 : 1; 
+    }
   });
   
   return counts;
