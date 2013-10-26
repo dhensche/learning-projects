@@ -5,9 +5,9 @@ app.filter('range', function() {
       end = parseInt(end);
     } else {
       end = start;
-      start = 1;
+      start = 0;
     }
-    step = step == null ? 0 : parseInt(step);
+    step = step == null ? 1 : parseInt(step);
     for (var i = start; i <= end; i += step)
       input.push(i);
     return input;
