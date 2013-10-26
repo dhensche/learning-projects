@@ -6,50 +6,74 @@ var PiDigits = require('../../Numbers/pi-digits'),
     Mortgage = require('../../Numbers/mortgage'),
     Change = require('../../Numbers/change'),
     Converter = require('../../Numbers/converter');
-
-module.exports = function(app){
-    app.get('/pi-digits/:n', function(req, res) {
+    
+exports.endpoints = [
+  {
+    path: '/pi-digits/:n',
+    method: 'get',
+    handler: function handler(req, res) {
       var n = parseInt(req.params.n, 10);
       res.send(PiDigits.digits(n).toString());
-    });
-    
-    app.get('/next-prime/:n', function(req, res) {
+    }
+  },
+  {
+    path: '/next-prime/:n',
+    method: 'get',
+    handler: function handler(req, res) {
       res.send(NextPrime.nextPrime(req.params.n).toString());
-    });
-    
-    app.get('/prime-factors/:n', function(req, res) {
+    }
+  },
+  {
+    path: '/prime-factors/:n',
+    method: 'get',
+    handler: function handler(req, res) {
       res.json(PrimeFactors.
         generate(req.params.n).
         map(function(factor) {
           return factor.toString();
         })
       );
-    });
-    
-    app.get('/fibonacci/:n', function(req, res) {
+    }
+  },
+  {
+    path: '/fibonacci/:n',
+    method: 'get',
+    handler: function handler(req, res) {
       var n = parseInt(req.params.n, 10);
       res.send(Fibonacci.firstN(n).
         map(function(factor) {
           return factor.toString();
         })
       );
-    });
-    
-    app.get(/tile-cost\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/, function(req, res) {
+    }
+  },
+  {
+    path: /tile-cost\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/,
+    method: 'get',
+    handler: function handler(req, res) {
       res.send(TileCost.cost(req.params[2], req.params[1], req.params[0]));
-    });
-    
-    app.get(/mortgage\/(\d+(?:\.\d+)?)\/(0?(?:\.\d+))\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/, function(req, res) {
+    }
+  },
+  {
+    path: /mortgage\/(\d+(?:\.\d+)?)\/(0?(?:\.\d+))\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/,
+    method: 'get',
+    handler: function handler(req, res) {
       var mortgage = new Mortgage(req.params[0], req.params[1], req.params[2], req.params[3]);
       res.send(mortgage[req.query.action](req.query.payment).toString());
-    });
-    
-    app.get(/change\/([\d.]+)\/([\d.]+)/, function(req, res) {
+    }
+  },
+  {
+    path: /change\/([\d.]+)\/([\d.]+)/,
+    method: 'get',
+    handler: function handler(req, res) {
       res.send(Change.calculate(parseFloat(req.params[0]), parseFloat(req.params[1])));
-    });
-    
-    app.get(/convert\/(-?[a-zA-Z0-9]+)\/(\d+)\/(\d+)/, function(req, res) {
+    }
+  },
+  {
+    path: /convert\/(-?[a-zA-Z0-9]+)\/(\d+)\/(\d+)/,
+    method: 'get',
+    handler: function handler(req, res) {
       res.send(Converter.convert(req.params[0], req.params[1], req.params[2]));
-    });
-    
-}
+    }
+  }
+]

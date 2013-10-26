@@ -1,3 +1,5 @@
+'use strict';
+
 app.directive('accordion', function accordion() {
   return {
     restrict: 'EA',

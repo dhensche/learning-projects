@@ -1,3 +1,5 @@
+'use strict';
+
 app.service('solver', function solver($http, $filter) {
   this.identity = function(d) {return d;};
   this.join = function(d) {return d.join(', ');};

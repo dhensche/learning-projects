@@ -1,3 +1,5 @@
+'use strict';
+
 app.filter('range', function() {
   return function(input, start, end, step) {
     start = parseInt(start);
