@@ -7,7 +7,7 @@ app.filter('range', function() {
       end = start;
       start = 1;
     }
-    step = step == null ? 1 : parseInt(step);
+    step = step == null ? 0 : parseInt(step);
     for (var i = start; i <= end; i += step)
       input.push(i);
     return input;
