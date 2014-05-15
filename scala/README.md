@@ -31,7 +31,7 @@ I will link to each project that I complete. Some will be in this same repo, som
 [Databases](Databases)
 ---------
 
-[Graphics and Multimedia]("Graphics and Multimedia")
+[Graphics and Multimedia](Graphics and Multimedia)
 ---------
 
 [Games](Games)
