@@ -12,4 +12,8 @@ package object numbers {
   trait DoubleProblem[Output] extends BasicProblem[Double, Output] {
     def convert(arg: String): Double = arg.toDouble
   }
+
+  trait BigIntProblem[Output] extends BasicProblem[BigInt, Output] {
+    def convert(arg: String): BigInt = BigInt(arg)
+  }
 }

@@ -5,7 +5,7 @@ Numbers
 
 [**Fibonacci Sequence**](src/main/scala/numbers/FibonacciSequence.scala) – Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number.
 
-**Prime Factorization** – Have the user enter a number and find all Prime Factors (if there are any) and display them.
+[**Prime Factorization**](src/main/scala/numbers/PrimeFactorization.scala) – Have the user enter a number and find all Prime Factors (if there are any) and display them.
 
 **Next Prime Number** – Have the program find prime numbers until the user chooses to stop asking for the next one.
 
