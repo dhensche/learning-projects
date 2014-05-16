@@ -1,16 +1,14 @@
+package text
+
 /**
   * @author dhensche
   *         Date: 5/15/14
   */
-object PigLatin {
+object PigLatin extends TextProblem[String] {
   val pattern = "([^aeiouAEIOU]*)(.*)".r
+  val exampleInput = Array("String A")
 
-  def main(args: Array[String]): Unit = {
-     val strings = if (args.isEmpty) Array("String A") else args
-     strings.map(latinize).foreach(println)
-   }
-
-  def latinize(string: String): String = {
+  def solve(string: String): String = {
     string
       .split("[^\\w]+")
       .map(
@@ -20,4 +18,6 @@ object PigLatin {
         _.getOrElse("Not a Word???!!?!")
       ).mkString(" ")
   }
+
+  def summarize(string: String, latinized: String) = latinized
  }

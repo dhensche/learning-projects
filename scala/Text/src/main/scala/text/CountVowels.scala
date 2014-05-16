@@ -1,16 +1,13 @@
+package text
+
 /**
   * @author dhensche
   *         Date: 5/15/14
   */
-object CountVowels {
-  val pattern = "([^aeiouAEIOU]*)(.*)".r
+object CountVowels extends TextProblem[Map[String, Int]] {
+  val exampleInput: Array[String] = Array("String ABIOUuu")
 
-  def main(args: Array[String]): Unit = {
-     val strings = if (args.isEmpty) Array("String ABIOUuu") else args
-     strings.map(count).foreach(m => println(m.mkString(",")))
-   }
-
-  def count(string: String): Map[String, Int] = {
+  def solve(string: String): Map[String, Int] = {
     val characters = string.split("")
     val aFiltered = characters.filterNot(c => c == "A" || c == "a")
     val eFiltered = aFiltered.filterNot(c => c == "E" || c == "e")
@@ -25,4 +22,8 @@ object CountVowels {
       "U" -> (oFiltered.length - uFiltered.length)
     )
   }
- }
+
+  override def summarize(input: String, output: Map[String, Int]): String = {
+    output.mkString(",")
+  }
+}
