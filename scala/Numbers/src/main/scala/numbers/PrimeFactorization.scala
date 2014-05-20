@@ -1,14 +1,17 @@
 package numbers
 
+import core.BasicProblem
+
 /**
  * @author dhensche
  *         Date: 5/16/14
  */
-object PrimeFactorization extends BigIntProblem[Iterable[Int]] {
+object PrimeFactorization extends BasicProblem[BigInt, Iterable[Int]] {
   val exampleInput: Array[BigInt] = Array(BigInt("389434788389434788"))
 
   def summarize(input: BigInt, output: Iterable[Int]): String = output.mkString(",")
 
+  def convert(arg: String): BigInt = BigInt(arg)
   def solve(input: BigInt): Iterable[Int] = {
     var n = input
     var factors: List[Int] = Nil
